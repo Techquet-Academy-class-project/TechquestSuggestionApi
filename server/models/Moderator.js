@@ -17,4 +17,4 @@ const ExperienceSchema = new Schema({
 //EXPORT THE MODEL
 const ModeratorModel = model("moderator", ModeratorSchema);
 const ExperienceModel = model("experiennce", ExperienceSchema);
-module.exports = { ModeratorModel, ExperienceModel };
+module.exports = ModeratorModel;
