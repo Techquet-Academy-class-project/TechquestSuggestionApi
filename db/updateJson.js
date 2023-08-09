@@ -9,4 +9,7 @@ export default function updateJsonFile(path, data) {
     }
     console.log("File updated successfully");
   });
+
+  //Todo this function should return a flag and messages
+  //indicating the success of the operation
 }
