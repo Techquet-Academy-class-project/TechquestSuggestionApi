@@ -9,11 +9,12 @@ const ModeratorSchema = new Schema({
   password: { type: String, required: true },
 });
 
-// const ExperienceSchema = new Schema{
-//   text : String
-//   show :  [default should be true]
-// }
+const ExperienceSchema = new Schema({
+  text: { type: String },
+  show: { type: Boolean, default: true },
+});
 
 //EXPORT THE MODEL
 const ModeratorModel = model("moderator", ModeratorSchema);
-module.exports = ModeratorModel;
+const ExperienceModel = model("experiennce", ExperienceSchema);
+module.exports = { ModeratorModel, ExperienceModel };
