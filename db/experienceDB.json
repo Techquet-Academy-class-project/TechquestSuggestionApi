@@ -8,5 +8,10 @@
     "id": 2,
     "text": "some unrelated review",
     "show": false
+  },
+  {
+    "id": 3,
+    "text": "I really like the color of the building. It feels asthetic",
+    "show": true
   }
 ]
