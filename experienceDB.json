@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "text": "The rooms and chairs are really fantastic",
+    "show": true
+  },
+  {
+    "id": 2,
+    "text": "some unrelated review",
+    "show": false
+  },
+  {
+    "id": 3,
+    "text": "I really like the color of the building. It feels asthetic",
+    "show": true
+  },
+  {
+    "id": 4,
+    "text": "i love the class",
+    "show": true
+  },
+  {
+    "id": 5,
+    "text": "i hate the class ",
+    "show": true
+  },
+  {
+    "id": 6,
+    "text": "i love techquest class",
+    "show": true
+  }
+]
