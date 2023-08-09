@@ -1,17 +1,6 @@
 import express from "express";
+import { modData } from "../db/dbhandlers.js";
 const router = express.Router();
-import modDB from "../db/moderatorDB.json" assert { type: "json" };
-import updateJsonFile from "../db/updateJson.js";
-
-const dbPath = "db/moderatorDB.json";
-
-const data = {
-  moderators: modDB,
-  setModerator: function (newData) {
-    this.moderators = newData;
-    updateJsonFile(dbPath, this.moderators);
-  },
-};
 
 router.post("/", (req, res) => {
   const newMod = {
@@ -27,7 +16,7 @@ router.post("/", (req, res) => {
   }
 
   // ensure unique email
-  let isNotUniqueEmail = data.moderators.find(
+  let isNotUniqueEmail = modData.moderators.find(
     (mod) => mod.email === newMod.email
   );
   if (isNotUniqueEmail) {
@@ -37,7 +26,7 @@ router.post("/", (req, res) => {
   }
 
   // update json database
-  data.setModerator([...data.moderators, newMod]);
+  modData.setModerator([...modData.moderators, newMod]);
 
   res.send(`Successfully registered ${newMod.name}`);
 });

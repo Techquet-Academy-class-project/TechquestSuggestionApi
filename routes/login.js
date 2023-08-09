@@ -1,18 +1,6 @@
 import express from "express";
-import updateJsonFile from "../db/updateJson.js";
-import modDB from "../db/moderatorDB.json" assert { type: "json" };
-
+import { modData } from "../db/dbhandlers.js";
 const router = express.Router();
-
-const dbPath = "db/moderatorDB.json";
-
-const data = {
-  moderators: modDB,
-  setModerator: function (newData) {
-    this.moderators = newData;
-    updateJsonFile(dbPath, this.moderators);
-  },
-};
 
 router.post("/", (req, res) => {
   //
@@ -22,7 +10,7 @@ router.post("/", (req, res) => {
   };
 
   // search for details entered in database
-  let foundMod = data.moderators.find(
+  let foundMod = modData.moderators.find(
     (mod) => mod.name.toLowerCase() == loginInfo.name.toLowerCase()
   );
   if (!foundMod) {

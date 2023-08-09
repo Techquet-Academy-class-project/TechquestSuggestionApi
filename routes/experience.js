@@ -1,23 +1,11 @@
 import express from "express";
-import expData from "../db/experienceDB.json" assert { type: "json" };
-import updateJsonFile from "../db/updateJson.js";
+import { expData } from "../db/dbhandlers.js";
 const router = express.Router();
 
-const dbPath = "db/experienceDB.json";
-
-// Todo - Handling the a state where database is empty
-const data = {
-  experiences: expData,
-  setExperience: function (newData) {
-    this.experiences = newData;
-    updateJsonFile(dbPath, this.experiences);
-  },
-};
-
-// Retrive all experience from database
+// Retrive all experience from experience
 router.get("/", (req, res) => {
   // send only experiences flaged show:true
-  const allowed = data.experiences.filter(({ show }) => show === true);
+  const allowed = expData.experiences.filter(({ show }) => show === true);
 
   res.status(200).json(allowed);
 });
@@ -31,13 +19,13 @@ router.post("/", (req, res) => {
   }
 
   let newExp = {
-    id: data.experiences.length + 1,
+    id: expData.experiences.length + 1,
     text: req.body.text,
     show: true,
   };
 
   //update json database
-  data.setExperience([...data.experiences, newExp]);
+  expData.setExperience([...expData.experiences, newExp]);
 
   console.log(newExp);
   res.status(200).send("success");
@@ -46,7 +34,7 @@ router.post("/", (req, res) => {
 // Update an experience
 router.put("/:id", (req, res) => {
   //find experience that matches the id
-  const experience = data.experiences.find(
+  const experience = expData.experiences.find(
     (exp) => exp.id === parseInt(req.params.id)
   );
   if (!experience) {
@@ -64,9 +52,9 @@ router.put("/:id", (req, res) => {
     return;
   }
 
-  // update the json database
-  data.experiences[experience.id - 1] = experience;
-  data.setExperience(data.experiences);
+  // update the json experience
+  expData.experiences[experience.id - 1] = experience;
+  expData.setExperience(expData.experiences);
 
   res.send("Success");
 });
