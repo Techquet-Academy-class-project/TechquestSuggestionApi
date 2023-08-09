@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "text": "The rooms and chairs are really fantastic",
+    "show": true
+  },
+  {
+    "id": 2,
+    "text": "some unrelated review",
+    "show": false
+  }
+]
