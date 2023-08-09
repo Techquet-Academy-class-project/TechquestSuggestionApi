@@ -1,10 +1,13 @@
+// dot env configuration
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+// routes imports
 import experience from "./routes/experience.js";
 import login from "./routes/login.js";
 import register from "./routes/register.js";
-const PORT = process.env.PORT;
+//setting PORT
+const PORT = process.env.PORT || 3500;
 
 const app = express();
 
