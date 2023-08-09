@@ -1,5 +1,5 @@
 {
-  "name": "techquestsuggestionapi",
+  "name": "suggestionapi",
   "version": "1.0.0",
   "description": "Api endpoints for suggestions including moderation ",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Techquet-Academy-class-project/TechquestSuggestionApi.git"
+    "url": "git+https://github.com/haruna2004/suggestions-api.git"
   },
   "keywords": [
     "techquest",
