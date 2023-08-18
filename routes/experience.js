@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
   expData.setExperience([...expData.experiences, newExp]);
 
   console.log(newExp);
-  res.status(200).send("success");
+  res.status(200).json({ message: "Review added successfuly" });
 });
 
 // Update an experience

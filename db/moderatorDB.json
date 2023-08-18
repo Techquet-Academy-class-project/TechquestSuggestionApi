@@ -18,5 +18,10 @@
     "name": "Juliu Berger",
     "email": "julius@oulook",
     "password": "bergery"
+  },
+  {
+    "name": "John Doe",
+    "email": "john@email",
+    "password": "john"
   }
 ]

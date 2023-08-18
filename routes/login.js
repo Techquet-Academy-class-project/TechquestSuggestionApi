@@ -24,4 +24,8 @@ router.post("/", (req, res) => {
   res.send("Login Successful!");
 });
 
+router.all("*", (req, res) =>
+  res.send("Method is not allowed. /login allows only POST")
+);
+
 export default router;

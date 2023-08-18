@@ -17,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 // built in middleware for json
 app.use(express.json());
 
+// routing
+
 app.get("/", (req, res) => res.send("Hello world"));
 app.use("/experience", experience);
 app.use("/login", login);
