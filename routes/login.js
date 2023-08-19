@@ -1,31 +1,26 @@
 import express from "express";
-import { modData } from "../db/dbhandlers.js";
+import Moderator from "../model/moderator.js";
 const router = express.Router();
 
 router.post("/", (req, res) => {
-  //
+  // get req
   const loginInfo = {
     name: req.body.username || req.body.name,
     password: req.body.password,
   };
 
-  // search for details entered in database
-  let foundMod = modData.moderators.find(
-    (mod) => mod.name.toLowerCase() == loginInfo.name.toLowerCase()
-  );
-  if (!foundMod) {
-    return res.status(404).json({ message: "Moderator not found" });
-  } else if (foundMod.password !== loginInfo.password) {
-    return res.status(404).json({ message: "Incorrect password" });
-  }
+  //search for details entered in database
+  const mod = Moderator.findOne({
+    name: loginInfo.name,
+  });
 
-  //Todo - An handler to actually keep the moderator logged in
+  if (!mod) {
+    return res.status(404).json({ message: "Moderator not found" });
+  } else if (mod.password !== loginInfo.password) {
+    return res.status(401).json({ message: "Inccorect password" });
+  }
 
   res.send("Login Successful!");
 });
-
-router.all("*", (req, res) =>
-  res.send("Method is not allowed. /login allows only POST")
-);
 
 export default router;
