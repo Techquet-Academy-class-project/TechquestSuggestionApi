@@ -10,8 +10,7 @@ import mongoose from "mongoose";
 //setting PORT
 const PORT = process.env.PORT || 3500;
 
-const MDBPWD = process.env.MDBPWD;
-const uri = `mongodb+srv://harunafaruk2004:${MDBPWD}@cluster0.wo49vd2.mongodb.net/?retryWrites=true&w=majority`;
+const uri = process.env.MDBURI;
 
 const app = express();
 
