@@ -1,60 +1,43 @@
 import express from "express";
-import { expData } from "../db/dbhandlers.js";
 const router = express.Router();
+import Experience from "../model/experience.js";
 
 // Retrive all experience from experience
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   // send only experiences flaged show:true
-  const allowed = expData.experiences.filter(({ show }) => show === true);
+  const allowed = await Experience.find({ show: true }, "text show").exec();
 
   res.status(200).json(allowed);
 });
 
 // Add a new experience
-router.post("/", (req, res) => {
+
+router.post("/", async (req, res) => {
+
   // ensure text is included
   if (!req.body.text) {
     res.send("Can't add. text is required");
     return;
   }
 
-  let newExp = {
-    id: expData.experiences.length + 1,
+
+  const newExp = await Experience.create({
+    // id: expData.experiences.length + 1,
     text: req.body.text,
     show: true,
-  };
+  });
 
-  //update json database
-  expData.setExperience([...expData.experiences, newExp]);
-
-  console.log(newExp);
-  res.status(200).send("success");
+  // console.log(newExp);
+  res.status(200).json({ message: "Review added successfuly" });
 });
 
 // Update an experience
-router.put("/:id", (req, res) => {
-  //find experience that matches the id
-  const experience = expData.experiences.find(
-    (exp) => exp.id === parseInt(req.params.id)
-  );
-  if (!experience) {
-    res.send(`Experience of ID ${req.params.id} was not Found`);
-    return;
+router.put("/:id", async (req, res) => {
+  //
+  const expFound = await Experience.findById(req.params.id);
+  if (expFound) {
+    await expFound.updateOne({ show: req.body.show });
   }
-
-  // update show value to given value
-  if (req.body.show !== null && req.body.show !== undefined)
-    experience.show = req.body.show;
-  else {
-    res.send(
-      'Unable to update. Requires show value true or false to update Eg {"show":false}'
-    );
-    return;
-  }
-
-  // update the json experience
-  expData.experiences[experience.id - 1] = experience;
-  expData.setExperience(expData.experiences);
 
   res.send("Success");
 });
