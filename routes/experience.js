@@ -11,12 +11,15 @@ router.get("/", async (req, res) => {
 });
 
 // Add a new experience
+
 router.post("/", async (req, res) => {
+
   // ensure text is included
   if (!req.body.text) {
     res.send("Can't add. text is required");
     return;
   }
+
 
   const newExp = await Experience.create({
     // id: expData.experiences.length + 1,

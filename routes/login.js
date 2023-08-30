@@ -1,13 +1,16 @@
 import express from "express";
+
 import Moderator from "../model/moderator.js";
 const router = express.Router();
 
 router.post("/", (req, res) => {
   // get req
+
   const loginInfo = {
     name: req.body.username || req.body.name,
     password: req.body.password,
   };
+
 
   //search for details entered in database
   const mod = Moderator.findOne({

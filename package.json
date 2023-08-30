@@ -1,21 +1,22 @@
+
 {
-  "name": "suggestionapi",
+  "name": "techquestsuggestionapi-1",
   "version": "1.0.0",
-  "description": "Api endpoints for suggestions including moderation ",
+  "description": "The goal of this project is to build a web API people (Techquest students) can go and share their unfiltered heartfelt experience and suggestions for the program, without having to log in and being recognized\r ## Routes",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haruna2004/suggestions-api.git"
-  },
+ "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Techquet-Academy-class-project/TechquestSuggestionApi.git"
+    },
   "keywords": [
     "techquest",
     "suggestions"
   ],
-  "author": "haruna faruk",
+  "author": "Makanjuola Tijani",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Techquet-Academy-class-project/TechquestSuggestionApi/issues"
